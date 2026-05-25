@@ -72,22 +72,22 @@ const Testimonials = () => {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="absolute w-full"
             >
-              <div className="bg-white/40 backdrop-blur-2xl border border-white/60 p-10 md:p-16 rounded-3xl shadow-[0_30px_60px_rgba(0,0,0,0.05)] text-center">
+              <div className="bg-white/40 backdrop-blur-2xl border border-white/60 p-6 md:p-16 rounded-3xl shadow-[0_30px_60px_rgba(0,0,0,0.05)] text-center h-full flex flex-col justify-center">
                 
                 {/* Gold Stars */}
-                <div className="flex justify-center gap-1 mb-8">
+                <div className="flex justify-center gap-1 mb-6 md:mb-8">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={20} className="text-accent fill-accent" />
+                    <Star key={i} size={18} className="text-accent fill-accent" />
                   ))}
                 </div>
 
-                <p className="text-xl md:text-3xl font-heading text-primary leading-relaxed mb-10 italic">
+                <p className="text-lg md:text-3xl font-heading text-primary leading-relaxed mb-6 md:mb-10 italic px-2">
                   "{testimonials[currentIndex].content}"
                 </p>
 
-                <div className="flex flex-col items-center justify-center">
-                  <p className="text-lg font-bold text-primary tracking-wide">{testimonials[currentIndex].name}</p>
-                  <p className="text-xs text-accent uppercase tracking-[0.2em] mt-1 font-semibold">{testimonials[currentIndex].role}</p>
+                <div className="flex flex-col items-center justify-center mt-auto">
+                  <p className="text-base md:text-lg font-bold text-primary tracking-wide">{testimonials[currentIndex].name}</p>
+                  <p className="text-[10px] md:text-xs text-accent uppercase tracking-[0.2em] mt-1 font-semibold">{testimonials[currentIndex].role}</p>
                 </div>
 
               </div>

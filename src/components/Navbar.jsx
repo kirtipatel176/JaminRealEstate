@@ -1,132 +1,89 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, PlayCircle, User } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 100);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'Properties', path: '/#properties' },
-    { name: 'Services', path: '/#about' },
-    { name: 'About', path: '/#about' },
-    { name: 'Investment Zones', path: '/#zones' },
-    { name: 'Contact', path: '/contact' }
-  ];
-
   return (
-    <div className="fixed top-0 left-0 w-full z-50 flex justify-center mt-6 px-4 pointer-events-none">
-      <motion.nav 
-        className={`pointer-events-auto flex flex-col md:flex-row items-center justify-between px-6 py-3 transition-all duration-700 ease-in-out ${
-          isScrolled 
-            ? 'w-[95%] max-w-6xl glass-dark-pill rounded-full' 
-            : 'w-full max-w-7xl bg-transparent'
-        }`}
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-      >
-        {/* Logo & Tagline */}
-        <div className="flex items-center gap-6 w-full md:w-auto justify-between md:justify-start">
-          <Link to="/" className={`font-heading text-2xl font-bold tracking-widest ${isScrolled ? 'text-accent' : 'text-bg-main'} transition-colors duration-500`}>
-            ONLY JAMIN.
-          </Link>
-          <span className={`hidden lg:block text-[10px] uppercase tracking-widest border-l pl-4 py-1 transition-colors duration-500 ${isScrolled ? 'border-white/20 text-white/60' : 'border-bg-main/20 text-bg-main/80'}`}>
-            Verified Land Deals Across Gujarat
-          </span>
+    <div className="w-full bg-white border-b border-gray-100 z-50 sticky top-0">
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
+        <nav className="flex items-center justify-between h-20">
+          
+          {/* Logo & Left Links */}
+          <div className="flex items-center gap-8">
+            <Link to="/" className="flex items-center gap-2">
+              <img src="/logo.png" alt="ONLY JAMIN" className="h-12 md:h-16 w-auto object-contain" />
+            </Link>
+            
+            <div className="hidden md:flex items-center gap-6 border-l border-gray-200 pl-8">
+              <Link to="/blog" className="text-sm font-medium text-gray-700 hover:text-primary transition-colors">
+                Blog
+              </Link>
+              <Link to="/investors" className="text-sm font-medium text-gray-700 hover:text-primary transition-colors">
+                For Investors
+              </Link>
+            </div>
+          </div>
+
+          {/* Desktop Right Actions */}
+          <div className="hidden md:flex items-center gap-4">
+            <Link 
+              to="/reals" 
+              className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 hover:text-primary border border-gray-200 rounded-full transition-all hover:border-primary/30"
+            >
+              <PlayCircle size={18} className="text-primary" />
+              Reals
+            </Link>
+            
+            <div className="relative">
+              <Link 
+                to="/list-property" 
+                className="flex items-center gap-2 px-5 py-2 text-sm font-medium text-gray-900 bg-gray-50 border border-gray-200 rounded-full hover:bg-gray-100 transition-colors"
+              >
+                List a Property
+              </Link>
+              <span className="absolute -top-2.5 -right-2 bg-orange-500 text-white text-[9px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wide">
+                Free
+              </span>
+            </div>
+            
+            <button className="w-10 h-10 rounded-full bg-gray-50 border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-gray-100 hover:text-primary transition-colors ml-2">
+              <User size={18} />
+            </button>
+          </div>
+
           {/* Mobile Menu Button */}
           <div className="md:hidden cursor-pointer" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
             {mobileMenuOpen ? (
-              <X size={24} className={isScrolled ? "text-accent" : "text-bg-main"} />
+              <X size={24} className="text-gray-900" />
             ) : (
-              <Menu size={24} className={isScrolled ? "text-white" : "text-bg-main"} />
+              <Menu size={24} className="text-gray-900" />
             )}
           </div>
-        </div>
+        </nav>
+      </div>
 
-        {/* Desktop Links */}
-        <div className={`hidden md:flex items-center gap-6 ${isScrolled ? 'px-4' : ''}`}>
-          {navLinks.map((link) => (
-            <Link 
-              key={link.name} 
-              to={link.path}
-              className={`text-xs uppercase tracking-[0.15em] relative group overflow-hidden ${isScrolled ? 'text-white/80 hover:text-accent' : 'text-bg-main/90 hover:text-accent'} transition-colors duration-300 font-medium`}
-            >
-              <span className="block">{link.name}</span>
-              <span className="absolute bottom-0 left-0 w-0 h-px bg-accent group-hover:w-full transition-all duration-300"></span>
-            </Link>
-          ))}
-        </div>
-
-        {/* Desktop Actions */}
-        <div className="hidden md:flex items-center gap-3">
-          <Link to="/contact" className={`px-5 py-2.5 text-[10px] font-bold tracking-[0.2em] uppercase rounded-full transition-all duration-500 border ${
-            isScrolled 
-              ? 'border-accent text-accent hover:bg-accent hover:text-primary shadow-[0_0_15px_rgba(200,169,107,0.1)]' 
-              : 'border-white/30 text-bg-main hover:bg-white hover:text-primary'
-          }`}>
-            Book Consultation
-          </Link>
-          <a href="https://wa.me/919876543210" target="_blank" rel="noreferrer" className={`px-5 py-2.5 text-[10px] font-bold tracking-[0.2em] uppercase rounded-full transition-all duration-500 flex items-center gap-2 ${
-            isScrolled 
-              ? 'bg-accent text-primary hover:bg-white' 
-              : 'bg-white text-primary hover:bg-accent'
-          }`}>
-            WhatsApp Now
-          </a>
-        </div>
-      </motion.nav>
-
-      {/* Full Screen Mobile Menu */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div 
-            className="fixed inset-0 z-40 bg-primary flex flex-col justify-center items-center pointer-events-auto"
-            initial={{ clipPath: 'circle(0% at 50% 10%)' }}
-            animate={{ clipPath: 'circle(150% at 50% 10%)' }}
-            exit={{ clipPath: 'circle(0% at 50% 10%)' }}
-            transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+            className="md:hidden bg-white border-t border-gray-100"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
           >
-            <div className="flex flex-col items-center gap-8">
-              {navLinks.map((link, i) => (
-                <motion.div 
-                  key={link.name}
-                  initial={{ y: 50, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.2 + (i * 0.1), duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  <Link 
-                    to={link.path} 
-                    className="font-heading text-4xl text-bg-main hover:text-accent transition-colors"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {link.name}
-                  </Link>
-                </motion.div>
-              ))}
-              <motion.div
-                className="mt-8 flex flex-col gap-4 w-64"
-                initial={{ y: 50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.8, duration: 0.8 }}
-              >
-                <Link to="/contact" onClick={() => setMobileMenuOpen(false)} className="w-full py-4 border border-accent text-accent text-center uppercase tracking-widest text-xs font-bold rounded-full">
-                  Book Consultation
-                </Link>
-                <a href="https://wa.me/919876543210" className="w-full py-4 bg-accent text-primary text-center uppercase tracking-widest text-xs font-bold rounded-full">
-                  WhatsApp Now
-                </a>
-              </motion.div>
+            <div className="flex flex-col p-4 gap-4">
+              <Link to="/blog" className="text-base font-medium text-gray-800" onClick={() => setMobileMenuOpen(false)}>Blog</Link>
+              <Link to="/investors" className="text-base font-medium text-gray-800" onClick={() => setMobileMenuOpen(false)}>For Investors</Link>
+              <Link to="/reals" className="flex items-center gap-2 text-base font-medium text-gray-800" onClick={() => setMobileMenuOpen(false)}>
+                <PlayCircle size={18} className="text-primary" /> Reals
+              </Link>
+              <Link to="/list-property" className="text-base font-medium text-gray-800 flex items-center gap-2" onClick={() => setMobileMenuOpen(false)}>
+                List a Property <span className="bg-orange-500 text-white text-[10px] px-2 py-0.5 rounded-md font-bold uppercase">Free</span>
+              </Link>
             </div>
           </motion.div>
         )}

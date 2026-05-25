@@ -8,7 +8,7 @@ import Contact from './pages/Contact'
 function App() {
   return (
     <Router>
-      <div className="w-full min-h-screen flex flex-col">
+      <div className="w-full min-h-screen flex flex-col overflow-x-hidden">
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />

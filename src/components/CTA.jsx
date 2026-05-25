@@ -9,7 +9,7 @@ const CTA = () => {
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-primary/80 mix-blend-multiply z-10"></div>
         <img 
-          src="https://images.unsplash.com/photo-1498642236967-4e6fffc8a411?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80" 
+          src="/images/cta_land.png" 
           alt="Gujarat Farmland Investment" 
           className="w-full h-full object-cover scale-105"
         />

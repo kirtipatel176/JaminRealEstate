@@ -21,9 +21,9 @@ const PropertyDetails = () => {
     ownership: "Clear Title (Freehold)",
     description: "An exceptional parcel of premium agricultural land situated in the rapidly developing outskirts of Gandhinagar. This property offers a rare combination of immediate agricultural utility and immense long-term capital appreciation potential due to the expanding commercial corridors nearby. The terrain is perfectly leveled, featuring rich soil quality and direct access to state highways.",
     images: [
-      "https://images.unsplash.com/photo-1592982537447-6f296d11a76c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80",
-      "https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1416339158484-9637228cc908?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+      "/images/farm_land.png",
+      "/images/weekend_farmhouse.png",
+      "/images/investment_land.png"
     ],
     features: [
       "Road Touch Access",
@@ -41,7 +41,7 @@ const PropertyDetails = () => {
   };
 
   return (
-    <div className="bg-bg-main min-h-screen pt-24 pb-32">
+    <div className="bg-bg-main min-h-screen pt-20 md:pt-24 pb-20 md:pb-32">
       
       {/* Hero Image Slider (Mocked as single large image for now, with gallery below) */}
       <div className="w-full h-[60vh] md:h-[70vh] relative mt-4">
@@ -187,7 +187,7 @@ const PropertyDetails = () => {
                 <button type="button" className="w-full bg-primary text-white font-bold uppercase tracking-widest text-xs py-4 rounded-xl mt-2 hover:bg-accent hover:text-primary transition-colors">
                   Schedule Visit
                 </button>
-                <a href="https://wa.me/919876543210" target="_blank" rel="noreferrer" className="w-full flex items-center justify-center gap-2 border border-primary text-primary font-bold uppercase tracking-widest text-xs py-4 rounded-xl hover:bg-bg-main transition-colors">
+                <a href="https://wa.me/919510774987" target="_blank" rel="noreferrer" className="w-full flex items-center justify-center gap-2 border border-primary text-primary font-bold uppercase tracking-widest text-xs py-4 rounded-xl hover:bg-bg-main transition-colors">
                   <Phone size={14} /> WhatsApp Inquiry
                 </a>
               </form>
