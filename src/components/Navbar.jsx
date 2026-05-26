@@ -7,7 +7,7 @@ const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <div className="w-full bg-white border-b border-gray-100 z-50 sticky top-0">
+    <div className="w-full bg-white/90 backdrop-blur-md border-b border-gray-100 z-50 sticky top-0 transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         <nav className="flex items-center justify-between h-20">
           
@@ -55,11 +55,11 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden cursor-pointer" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+          <div className="md:hidden p-2 -mr-2 cursor-pointer rounded-full hover:bg-gray-100 transition-colors" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
             {mobileMenuOpen ? (
-              <X size={24} className="text-gray-900" />
+              <X size={28} className="text-gray-900" />
             ) : (
-              <Menu size={24} className="text-gray-900" />
+              <Menu size={28} className="text-gray-900" />
             )}
           </div>
         </nav>
@@ -69,20 +69,21 @@ const Navbar = () => {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div 
-            className="md:hidden bg-white border-t border-gray-100"
+            className="md:hidden absolute top-20 left-0 w-full bg-white/95 backdrop-blur-xl border-b border-gray-100 shadow-xl overflow-hidden"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
           >
-            <div className="flex flex-col p-4 gap-4">
-              <Link to="/blog" className="text-base font-medium text-gray-800" onClick={() => setMobileMenuOpen(false)}>Blog</Link>
-              <Link to="/investors" className="text-base font-medium text-gray-800" onClick={() => setMobileMenuOpen(false)}>For Investors</Link>
-              <Link to="/reals" className="flex items-center gap-2 text-base font-medium text-gray-800" onClick={() => setMobileMenuOpen(false)}>
-                <PlayCircle size={18} className="text-primary" /> Reals
+            <div className="flex flex-col p-6 gap-6">
+              <Link to="/blog" className="text-lg font-semibold text-gray-800 hover:text-[#E04F16] transition-colors" onClick={() => setMobileMenuOpen(false)}>Blog</Link>
+              <Link to="/investors" className="text-lg font-semibold text-gray-800 hover:text-[#E04F16] transition-colors" onClick={() => setMobileMenuOpen(false)}>For Investors</Link>
+              <Link to="/reals" className="flex items-center gap-3 text-lg font-semibold text-gray-800 hover:text-[#E04F16] transition-colors" onClick={() => setMobileMenuOpen(false)}>
+                <PlayCircle size={22} className="text-[#E04F16]" /> Reals
               </Link>
-              <Link to="/list-property" className="text-base font-medium text-gray-800 flex items-center gap-2" onClick={() => setMobileMenuOpen(false)}>
-                List a Property <span className="bg-orange-500 text-white text-[10px] px-2 py-0.5 rounded-md font-bold uppercase">Free</span>
+              <Link to="/list-property" className="text-lg font-semibold text-gray-800 flex items-center justify-between mt-2 bg-gray-50 p-4 rounded-2xl border border-gray-100" onClick={() => setMobileMenuOpen(false)}>
+                <span className="flex items-center gap-2">List a Property</span>
+                <span className="bg-orange-500 text-white text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider shadow-sm">Free</span>
               </Link>
             </div>
           </motion.div>

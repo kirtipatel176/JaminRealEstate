@@ -2,9 +2,11 @@ import Hero from '../components/Hero'
 import PropertySearch from '../components/PropertySearch'
 import FeaturedProperties from '../components/FeaturedProperties'
 import WatchReals from '../components/WatchReals'
+import FeaturedProjects from '../components/FeaturedProjects'
+import ResidentialProperties from '../components/ResidentialProperties'
 import WhyChooseUs from '../components/WhyChooseUs'
 import InteractiveMap from '../components/InteractiveMap'
-import ProcessTimeline from '../components/ProcessTimeline'
+import PropertySnapshot from '../components/PropertySnapshot'
 import Testimonials from '../components/Testimonials'
 
 
@@ -15,9 +17,11 @@ const Home = () => {
       <PropertySearch />
       <FeaturedProperties />
       <WatchReals />
+      <FeaturedProjects />
+      <ResidentialProperties />
       <WhyChooseUs />
       <InteractiveMap />
-      <ProcessTimeline />
+      <PropertySnapshot />
       <Testimonials />
 
     </>

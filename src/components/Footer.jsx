@@ -14,14 +14,27 @@ const Footer = () => {
           
           {/* Column 1: Logo & Email */}
           <div className="lg:col-span-4 flex flex-col gap-8">
-            <Link to="/" className="inline-block bg-white/95 rounded-2xl px-4 py-2 w-fit">
-              <img src="/logo.png" alt="ONLY JAMIN" className="h-8 md:h-10 w-auto object-contain" />
-            </Link>
-            <div>
-              <h4 className="text-[#8499B8] text-[11px] font-semibold uppercase tracking-widest mb-3">Email</h4>
-              <a href="mailto:info@vedanco.com" className="text-white hover:text-[#F05520] transition-colors text-sm md:text-[15px]">
-                info@vedanco.com
-              </a>
+           
+            <div className="flex flex-col gap-5">
+              <div>
+                <h4 className="text-[#8499B8] text-[11px] font-semibold uppercase tracking-widest mb-2">Address</h4>
+                <p className="text-[#D1D5DB] text-[13px] md:text-[15px] leading-relaxed">
+                  Gandhinagar, Infocity, <br />
+                  Ahmedabad, Gujarat, India - 382007
+                </p>
+              </div>
+              <div>
+                <h4 className="text-[#8499B8] text-[11px] font-semibold uppercase tracking-widest mb-2">Phone</h4>
+                <a href="tel:+919510774987" className="text-[#D1D5DB] hover:text-white transition-colors text-[13px] md:text-[15px]">
+                  +91 9510774987
+                </a>
+              </div>
+              <div>
+                <h4 className="text-[#8499B8] text-[11px] font-semibold uppercase tracking-widest mb-2">Email</h4>
+                <a href="mailto:info@vedanco.com" className="text-[#D1D5DB] hover:text-white transition-colors text-[13px] md:text-[15px]">
+                  info@vedanco.com
+                </a>
+              </div>
             </div>
           </div>
 

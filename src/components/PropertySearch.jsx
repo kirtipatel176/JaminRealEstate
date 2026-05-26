@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Map, Search, ChevronDown } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const PropertySearch = () => {
   const [activeTab, setActiveTab] = useState('Buy');
   const tabs = ['Buy', 'Rent', 'Commercial', 'Plots/Lands', 'PG/Hostel'];
+  const navigate = useNavigate();
 
   return (
     <section className="relative z-20 -mt-16 md:-mt-24 w-full px-4 md:px-6 flex justify-center">
@@ -55,7 +57,10 @@ const PropertySearch = () => {
               <Map size={16} />
               Map
             </button>
-            <button className="flex-1 md:flex-none flex items-center justify-center gap-2 bg-[#E04F16] text-white px-8 py-2.5 rounded-full text-sm font-semibold hover:bg-[#C84C0C] transition-colors shadow-lg shadow-orange-500/30">
+            <button 
+              onClick={() => navigate('/properties')}
+              className="flex-1 md:flex-none flex items-center justify-center gap-2 bg-[#E04F16] text-white px-8 py-2.5 rounded-full text-sm font-semibold hover:bg-[#C84C0C] transition-colors shadow-lg shadow-orange-500/30"
+            >
               <Search size={16} />
               Search
             </button>
