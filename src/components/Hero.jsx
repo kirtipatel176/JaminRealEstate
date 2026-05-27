@@ -34,7 +34,7 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
         >
           <img 
-            src="/images/hero_family.png" 
+            src="/images/hero_family_transparent.png" 
             alt="Happy Family" 
             className="w-full max-w-[320px] sm:max-w-[400px] md:max-w-[450px] lg:max-w-[550px] xl:max-w-[650px] object-contain drop-shadow-2xl origin-bottom"
           />
